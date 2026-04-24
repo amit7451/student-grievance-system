@@ -254,11 +254,11 @@ export default function GrievanceList() {
             <form onSubmit={handleEdit}>
               <div className="form-group">
                 <label>Title</label>
-                <input type="text" value={editForm.title} onChange={(e) => setEditForm(e => ({...e, title: e.target.value}))} />
+                <input type="text" value={editForm.title} onChange={(e) => setEditForm(prev => ({...prev, title: e.target.value}))} />
               </div>
               <div className="form-group">
                 <label>Category</label>
-                <select value={editForm.category} onChange={(e) => setEditForm(e => ({...e, category: e.target.value}))}>
+                <select value={editForm.category} onChange={(e) => setEditForm(prev => ({...prev, category: e.target.value}))}>
                   <option>Academic</option>
                   <option>Hostel</option>
                   <option>Transport</option>
@@ -267,11 +267,11 @@ export default function GrievanceList() {
               </div>
               <div className="form-group">
                 <label>Description</label>
-                <textarea rows="4" value={editForm.description} onChange={(e) => setEditForm(e => ({...e, description: e.target.value}))} />
+                <textarea rows="4" value={editForm.description} onChange={(e) => setEditForm(prev => ({...prev, description: e.target.value}))} />
               </div>
               <div className="form-group">
                 <label>Status</label>
-                <select value={editForm.status} onChange={(e) => setEditForm(e => ({...e, status: e.target.value}))}>
+                <select value={editForm.status} onChange={(e) => setEditForm(prev => ({...prev, status: e.target.value}))}>
                   <option>Pending</option>
                   <option>Resolved</option>
                 </select>

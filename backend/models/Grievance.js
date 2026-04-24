@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const grievanceSchema = new mongoose.Schema(
   {
     title: {
@@ -43,8 +42,6 @@ const grievanceSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
 // Index for faster search
 grievanceSchema.index({ title: 'text', description: 'text' });
-
 module.exports = mongoose.model('Grievance', grievanceSchema);

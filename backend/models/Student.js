@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-
 const studentSchema = new mongoose.Schema(
   {
     name: {
@@ -26,7 +25,6 @@ const studentSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
 // Hash password before saving
 studentSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next();
@@ -34,17 +32,14 @@ studentSchema.pre('save', async function (next) {
   this.password = await bcrypt.hash(this.password, salt);
   next();
 });
-
 // Compare password method
 studentSchema.methods.comparePassword = async function (candidatePassword) {
   return await bcrypt.compare(candidatePassword, this.password);
 };
-
 // Remove password from JSON output
 studentSchema.methods.toJSON = function () {
   const obj = this.toObject();
   delete obj.password;
   return obj;
 };
-
 module.exports = mongoose.model('Student', studentSchema);
