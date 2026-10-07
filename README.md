@@ -64,7 +64,27 @@ student-grievance-system/
 
 ## Setup Instructions
 
-### Prerequisites
+### Option 1: Docker (Recommended - 1 Command)
+
+Run the entire full-stack application (React Frontend, Express Backend, and MongoDB) with zero manual dependency setup:
+
+```bash
+# Production stack
+docker compose up --build -d
+
+# Development stack (live hot-reloading for frontend & backend)
+docker compose -f docker-compose.dev.yml up --build
+```
+
+- **Frontend App**: [http://localhost:5173](http://localhost:5173)
+- **Backend API**: [http://localhost:5000](http://localhost:5000)
+- Detailed configuration, environment customization, and Atlas support: see [DOCKER.md](DOCKER.md).
+
+---
+
+### Option 2: Local Manual Setup
+
+#### Prerequisites
 - Node.js v18+
 - MongoDB Atlas account (or local MongoDB)
 

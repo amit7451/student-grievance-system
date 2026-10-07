@@ -6,8 +6,13 @@ const authRoutes = require('./routes/auth');
 const grievanceRoutes = require('./routes/grievances');
 const app = express();
 // Middleware
+const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
+const allowedOrigins = clientUrl.includes(',')
+  ? clientUrl.split(',').map((s) => s.trim())
+  : clientUrl;
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: allowedOrigins,
   credentials: true
 }));
 app.use(express.json());
